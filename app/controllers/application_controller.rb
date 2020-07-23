@@ -9,9 +9,10 @@ class ApplicationController < Sinatra::Base
     set :sessions_secret, ENV["SESSIONS_SECRETS"]
   end
 
-  get "/" do
-
-    erb :"Hell World!"
+  get '/' do
+    erb :"Hello World"
   end
+
+  
 
 end
