@@ -13,6 +13,14 @@ class ApplicationController < Sinatra::Base
     erb :"Hello World"
   end
 
-  
+  post '/' do 
+    erb :welcome
+  end
+
+helpers do
+  def current_user
+    @user = User.first
+  end
+end  
 
 end

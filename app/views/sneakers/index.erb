@@ -1,0 +1,19 @@
+<h3>My Sneakers:</h3>
+
+
+<table border=1>
+<tr>
+    <td>Name:</td>
+    <td>Price:</td>
+    <td>Brand:</td>
+    <td>Owner:</td>
+</tr>
+<% @sneakers.each do |sneaker|%>
+<tr>
+    <td><%= sneaker.sneaker_name%></td>
+    <td><%= sneaker.sneaker_price %></td>
+    <td><%= sneaker.sneaker_brand %></td>
+    <td><%= sneaker.user.username %></td>
+</tr>
+<%end%>
+</table>
