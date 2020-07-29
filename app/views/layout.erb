@@ -8,17 +8,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
     <title>Personal Sneaker Vault</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     
   </head>
   <body>
   <nav>
+  <%if current_user%>
+    <form action="/logout" method='post'>
+      <input type="hidden" name="method" value="DELETE">
+      <input type="submit" value="logout">
+    </form>
     <a href="/sneakers/new">New Sneaker</a>
+    <a href="/sneakers">All Sneakers</a>
+    <%end%>  
+
   </nav>  
     <div class="wrapper">
-
         <%= yield %> 
      
     </div>

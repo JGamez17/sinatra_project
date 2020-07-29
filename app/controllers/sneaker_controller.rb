@@ -1,14 +1,12 @@
 class SneakerController < ApplicationController
 
     #index action: list all sneakers
-    get '/sneakers' do
-        @sneakers = Sneaker.all
-        erb :'sneakers/index' #renders this particular view 
-    end
 
     get '/sneakers' do
-        @sneakers = current_user.sneaker
+        if user_logged_in?
+        @sneakers = current_user.sneakers  
         erb :'sneakers/index'
+        end
     end
 
     #new action
@@ -20,19 +18,24 @@ class SneakerController < ApplicationController
      post '/sneakers' do 
         @sneaker = Sneaker.create(params)
         redirect "/sneakers/#{@sneaker.id}"
-    end
+     end
 
     #show action 
+
+    get '/sneakers/:id' do
+        @sneaker = Sneaker.find(params[:id])
+        if @sneaker
+            erb :'sneaker/show'
+        else
+            redirect "/sneakers"
+        end
+    end
+    
 
     #edit action(view for form that will update)
 
     #update action 
     
     #delete action 
-
-    get '/sneakers/:id' do 
-        @sneaker = Sneaker.find(params[:id])
-        erb :'/sneakers/show'
-    end
     
 end

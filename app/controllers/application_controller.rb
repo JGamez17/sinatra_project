@@ -10,17 +10,17 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :"Hello World"
+    erb :'welcome'
   end
 
   post '/' do 
-    erb :welcome
+    erb :'welcome'
   end
 
-helpers do
-  def current_user
-    @user = User.first
-  end
-end  
+  helpers do
+    def current_user
+      @user = User.find_by_id(session[:user_id])  
+    end
+  end  
 
 end
