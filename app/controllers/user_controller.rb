@@ -9,16 +9,14 @@ class UserController < ApplicationController
     end
 
     post '/users/signup' do
-        # binding.pry
-        user = User.new(username: params[:username], password: params[:password]) #from controller to view as an instance variable
-        if user.save
+        @user = User.new(params)
+        if @user.save
             redirect "/users/login"
         else 
-            redirect "/failure"
+            erb :"/users/login"
         end
-        redirect "/users/sneakers"
     end
-   
+
     get '/users/login' do
         erb :'/users/login'
     end
@@ -31,18 +29,21 @@ class UserController < ApplicationController
     post '/users/login' do 
         @user = User.find_by(username: params[:username])
         # binding.pry
-        # session[:user_id] = @user.id
-        if @user
-        redirect "/users/#{@user.id}"
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect "/sneakers"
         else 
-            redirect '/failure'
-        end
+            erb :'users/login'
+        end    
+    end
+
+    delete '/logout' do
+        session.destroy
+        redirect '/users/login'
     end
 
     get '/failure' do
         erb :failure
     end
-
-
     
 end

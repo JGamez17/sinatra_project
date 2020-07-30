@@ -6,12 +6,12 @@ body {
 }
 
 h1 {
-  color: white;
+  color: blue;
   text-align: center;
 }
 
 p {
-  font-family: montserrat;
+  font-family: monospace;
   font-size: 20px;
 }
 </style>
@@ -23,7 +23,7 @@ p {
 <h2>Login</h2>
 
 <form action='/users/login' method="POST">
-  Username: <input type=text name="username">
+  Username: <input type=text name="username" value="<%=@user && @user.username%>">
   Password: <input type=password name="password">
             <input type=submit>
 </form>
@@ -31,3 +31,4 @@ p {
 </body>
 </html>
 
+<a href="/">Home Page</a> 

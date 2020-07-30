@@ -1,4 +1,6 @@
-<h3>My Sneakers:</h3>
+<h1><%=current_user.username%></h1>
+
+<h3>Sneaker Collection:</h3>
 
 
 <table border=1>
@@ -8,7 +10,7 @@
     <td>Brand:</td>
     <td>Owner:</td>
 </tr>
-<% @sneakers.each do |sneaker|%>
+<% @sneaker.each do |sneaker|%>
 <tr>
     <td><%= sneaker.sneaker_name%></td>
     <td><%= sneaker.sneaker_price %></td>

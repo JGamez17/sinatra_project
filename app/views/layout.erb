@@ -16,11 +16,11 @@
   <nav>
   <%if current_user%>
     <form action="/logout" method='post'>
-      <input type="hidden" name="method" value="DELETE">
+      <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="logout">
     </form>
     <a href="/sneakers/new">New Sneaker</a>
-    <a href="/sneakers">All Sneakers</a>
+    <%# <a href="/">Home Page</a> %>
     <%end%>  
 
   </nav>  

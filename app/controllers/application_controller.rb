@@ -6,16 +6,14 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :sessions_secret, ENV["SESSIONS_SECRETS"]
+    set :session_secret, "SESSION_SECRET"
   end
 
   get '/' do
     erb :'welcome'
   end
 
-  post '/' do 
-    erb :'welcome'
-  end
+ 
 
   helpers do
     def current_user

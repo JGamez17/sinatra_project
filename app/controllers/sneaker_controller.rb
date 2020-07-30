@@ -3,10 +3,9 @@ class SneakerController < ApplicationController
     #index action: list all sneakers
 
     get '/sneakers' do
-        if user_logged_in?
-        @sneakers = current_user.sneakers  
-        erb :'sneakers/index'
-        end
+        # binding.pry
+            @sneaker = current_user.sneakers 
+            erb :'sneakers/index'
     end
 
     #new action
@@ -16,8 +15,13 @@ class SneakerController < ApplicationController
 
     #create action
      post '/sneakers' do 
-        @sneaker = Sneaker.create(params)
-        redirect "/sneakers/#{@sneaker.id}"
+        if params[:sneaker_name] != ""
+            @sneaker = current_user.sneakers.create(params)
+            redirect "/sneakers/#{@sneaker.id}"
+        else
+            @error = 'you messed up'
+            redirect 'sneakers/new'
+        end
      end
 
     #show action 
@@ -25,7 +29,7 @@ class SneakerController < ApplicationController
     get '/sneakers/:id' do
         @sneaker = Sneaker.find(params[:id])
         if @sneaker
-            erb :'sneaker/show'
+            erb :'sneakers/show'
         else
             redirect "/sneakers"
         end
