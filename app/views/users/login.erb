@@ -2,12 +2,19 @@
 <head>
 <style>
 body {
-  background-color: black;
+  background-color: ;
 }
 
 h1 {
+  font-family: monospace;
   color: blue;
-  text-align: center;
+  text-align: left;
+}
+
+h2 {
+  color: teal;
+  font-family: monospace;
+  text-align: left;
 }
 
 p {
@@ -21,6 +28,10 @@ p {
 <html>
 <h1>Personal Sneaker Vault</h1>
 <h2>Login</h2>
+
+<%if @error_message%>
+  <p><%=@error_message%></p>
+<%end%>
 
 <form action='/users/login' method="POST">
   Username: <input type=text name="username" value="<%=@user && @user.username%>">

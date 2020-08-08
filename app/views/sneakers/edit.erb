@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: ;
+}
+
+h1 {
+  color: blue;
+  font-family: monospace;
+  text-align: left;
+}
+
+p {
+  font-family: monospace;
+  font-size: 20px;
+}
+
+h2 {
+  color: white;
+  font-family: monospace;
+  text-align: left;
+}
+
+h3 {
+  color: teal;
+  font-family: monospace;
+  text-align: left;
+}
+
+</style>
+</head>
+
+<h1> Edit Sneaker </h1>
+
+<form action="/sneakers/<%=@sneaker.id%>" method="post">
+
+  <p>Sneaker Name:<input type=text value="<%=@sneaker.sneaker_name%>" name="sneaker_name"></td></p>
+  <p>Sneaker Price: <input type=number value="<%=@sneaker.sneaker_price%>" name="sneaker_price"><p>
+  <p>Sneaker Brand: <input type=text value="<%=@sneaker.sneaker_brand%>" name="sneaker_brand"><p>
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="submit" value="Edit Sneaker">
+
+</form>

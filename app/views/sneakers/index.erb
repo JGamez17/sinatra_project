@@ -1,21 +1,56 @@
-<h1><%=current_user.username%></h1>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: ;
+}
 
-<h3>Sneaker Collection:</h3>
+h1 {
+  font-family: monospace;  
+  color: blue;
+  text-align: left;
+}
+
+h3 {
+  color: teal;
+  font-family: monospace;
+  text-align: left;
+}
+
+</style>
+</head>
 
 
-<table border=1>
+<h1>Welcome Sneaker Head  <%=current_user.username%></h1>
+
+<h3>My Sneaker Collection:</h3>
+
+
+<table border=4>
 <tr>
     <td>Name:</td>
     <td>Price:</td>
     <td>Brand:</td>
     <td>Owner:</td>
 </tr>
+
 <% @sneaker.each do |sneaker|%>
 <tr>
+<form action="sneakers/<%=sneaker.id%>" method="post">
     <td><%= sneaker.sneaker_name%></td>
     <td><%= sneaker.sneaker_price %></td>
     <td><%= sneaker.sneaker_brand %></td>
-    <td><%= sneaker.user.username %></td>
-</tr>
+    <td><%= sneaker.user.username %>
+
+    <a href='/sneakers/<%=sneaker.id%>/edit'>Update Sneaker</a>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="X DELETE" style="color:red "></td>
+</tr> 
+</form>
 <%end%>
 </table>
+
+<a href="/">Home Page</a>
+<a href='/sneakers/new'>Add New Sneaker</a>
+

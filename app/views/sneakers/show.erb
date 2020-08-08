@@ -2,27 +2,31 @@
 <html>
 <head>
 <style>
-body {
-  background-color: black;
+body style {
+  background-color: ;
 }
 
 h1 {
-  color: white;
+  font-family: monospace;
+  color: blue;
   text-align: center;
 }
 
 p {
-  font-family: montserrat;
+  font-family: monospace;
   font-size: 20px;
+  color: blue;
 }
 </style>
 </head>
 <body>
 
-<h1>Personal Sneaker Collectoin</h1>
+<h1>Sneaker Details</h1>
 <P>SNEAKER NAME </p> <%= @sneaker.sneaker_name %>
-<p>RETAIL PRICE $ <%= @sneaker.sneaker_price %></p>
-<p>BRAND          <%= @sneaker.sneaker_brand %></p>
+<p>RETAIL PRICE</p> $<%= @sneaker.sneaker_price %>
+<p>BRAND </p>        <%= @sneaker.sneaker_brand %>
+
+<a href='/sneakers'>My Sneaker Vault</a>
 
 </body>
 </html>

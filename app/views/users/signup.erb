@@ -3,13 +3,13 @@
 <head>
 <style>
 body {
-  background-color: black;
+  background-color: ;
 }
 
 h1 {
   color: blue;
-  font-family: montserrant;
-  text-align: center;
+  font-family: monospace;
+  text-align: left;
 }
 
 p {
@@ -18,8 +18,14 @@ p {
 }
 
 h2 {
-  color: blue;
-  font-family: montserrant;
+  color: white;
+  font-family: monospace;
+  text-align: left;
+}
+
+h3 {
+  color: teal;
+  font-family: monospace;
   text-align: left;
 }
 
@@ -30,14 +36,25 @@ h2 {
 <body>
 <html>
 
-<h1>Personal Sneaker Vault</h1>
-<h2>Sign Up</h2>
+<h1>Personal Sneaker Vault, SIGN UP</h1>
+<h3>Please create a Username & Password to sign up!</h3>
+
+
+<%# <h3>Please create a Username & Password to sign up!</h3><br> %>
 
 <form action='/users/signup' method="POST">
   Username: <input type=text name="username">
   Password: <input type=password name="password">
-            <input type=submit>
-</form>
+            <input type=submit value="Sign Up"><br>
+</form>            
+
+<%if @error_message%>
+  <p><%=@error_message%></p>
+<%end%>          
+
+<a href="/">Home Page</a>
+<a href='/users/login'>Login Page</a>
+
 
 </body>
 </html>

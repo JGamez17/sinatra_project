@@ -11,9 +11,10 @@ class UserController < ApplicationController
     post '/users/signup' do
         @user = User.new(params)
         if @user.save
-            redirect "/users/login"
+           redirect "/users/login"
         else 
-            erb :"/users/login"
+            @error_message = "Please try again, user name & password required"
+            erb :"/users/signup"
         end
     end
 
@@ -22,28 +23,25 @@ class UserController < ApplicationController
     end
 
     get '/users/:id' do
+        # binding.pry
         @user = User.find(params[:id])
         erb :'/users/show'
     end
 
     post '/users/login' do 
         @user = User.find_by(username: params[:username])
-        # binding.pry
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect "/sneakers"
         else 
-            erb :'users/login'
+            @error_message = "Sneaker Head not found, Please Sign Up"
+            erb :'users/signup'
         end    
     end
 
     delete '/logout' do
         session.destroy
-        redirect '/users/login'
-    end
-
-    get '/failure' do
-        erb :failure
+        redirect '/'
     end
     
 end
