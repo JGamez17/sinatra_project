@@ -9,11 +9,11 @@ class UserController < ApplicationController
     end
 
     post '/users/signup' do
-        @user = User.new(params)
+        @user = User.new(params) 
         if @user.save
-           redirect "/users/login"
+           redirect "/sneakers"
         else 
-            @error_message = "Please try again, user name & password required"
+            @error_message = "Please try again, user name & password required or user already taken"
             erb :"/users/signup"
         end
     end
@@ -23,7 +23,7 @@ class UserController < ApplicationController
     end
 
     get '/users/:id' do
-        # binding.pry
+        binding.pry
         @user = User.find(params[:id])
         erb :'/users/show'
     end

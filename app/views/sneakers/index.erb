@@ -2,8 +2,10 @@
 <html>
 <head>
 <style>
+
+<div>
 body {
-  background-color: ;
+  background-color:black;
 }
 
 h1 {
@@ -21,18 +23,15 @@ h3 {
 </style>
 </head>
 
-
 <h1>Welcome Sneaker Head  <%=current_user.username%></h1>
 
-<h3>My Sneaker Collection:</h3>
 
-
-<table border=4>
+<table border=1>
 <tr>
     <td>Name:</td>
     <td>Price:</td>
     <td>Brand:</td>
-    <td>Owner:</td>
+    <td>Edit Sneaker</td>
 </tr>
 
 <% @sneaker.each do |sneaker|%>
@@ -41,7 +40,7 @@ h3 {
     <td><%= sneaker.sneaker_name%></td>
     <td><%= sneaker.sneaker_price %></td>
     <td><%= sneaker.sneaker_brand %></td>
-    <td><%= sneaker.user.username %>
+    <td>
 
     <a href='/sneakers/<%=sneaker.id%>/edit'>Update Sneaker</a>
     <input type="hidden" name="_method" value="DELETE">
@@ -50,6 +49,8 @@ h3 {
 </form>
 <%end%>
 </table>
+</div>
+
 
 <a href="/">Home Page</a>
 <a href='/sneakers/new'>Add New Sneaker</a>
