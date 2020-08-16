@@ -5,12 +5,14 @@ class UserController < ApplicationController
     end
 
     get '/users/signup' do 
+        if_logged_in_redirect_to_sneakers
         erb :'/users/signup'
     end
 
     post '/users/signup' do
         @user = User.new(params) 
         if @user.save
+           session[:user_id] = @user.id
            redirect "/sneakers"
         else 
             @error_message = "Please try again, user name & password required or user already taken"
@@ -19,11 +21,12 @@ class UserController < ApplicationController
     end
 
     get '/users/login' do
+        if_logged_in_redirect_to_sneakers
         erb :'/users/login'
     end
 
     get '/users/:id' do
-        binding.pry
+        if_logged_in_redirect_to_sneakers
         @user = User.find(params[:id])
         erb :'/users/show'
     end

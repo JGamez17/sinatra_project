@@ -30,7 +30,7 @@ class SneakerController < ApplicationController
 
     #show action 
     get '/sneakers/:id' do
-        @sneaker = current_user.sneakers.find_by_id(params[:id])
+        @sneaker = Sneaker.find_by_id(params[:id])
         if @sneaker
             erb :'sneakers/show'
         else
@@ -41,11 +41,15 @@ class SneakerController < ApplicationController
     #edit action(view for form that will update)
     get '/sneakers/:id/edit' do
         set_sneaker
+        if @sneaker 
         erb :'/sneakers/edit'
+        else
+            redirect '/sneakers'
+        end
     end
     
     #update action 
-    patch '/sneakers/:id' do 
+    patch '/sneakers/:id' do
         params.delete(:_method)
         set_sneaker
         @sneaker.update(params)
